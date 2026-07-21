@@ -21,5 +21,8 @@ class LedStrip {
         window.repaint();
     }
 
+    public void setColor(int i, double blendedColor) {
+        
+    }
 }
 
