@@ -16,8 +16,14 @@ class SolidAnimation implements Animation {
             strip.setColor(i, this.color);
         }
     }
+
     @Override
     public void update() {
 
+    }
+
+    @Override
+    public boolean isFinished() {
+        return false;
     }
 }

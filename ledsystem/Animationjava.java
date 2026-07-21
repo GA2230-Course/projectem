@@ -4,4 +4,5 @@ interface Animation {
     void apply(LedStrip strip);
 
     void update();
+    boolean isFinished();
 }

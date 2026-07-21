@@ -14,9 +14,13 @@ class LedController {
     public void play() {
         while (true) {
             if (this.animation != null) {
-                this.animation.update();
-                this.animation.apply(strip);
+                if (this.animation.isFinished()) {
+                    break;
+                }
             }
+            this.animation.update();
+            this.animation.apply(strip);
+
         }
     }
     public LedStrip getStrip() {
