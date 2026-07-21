@@ -6,22 +6,25 @@ import java.awt.Color;
 class BlinkAnimation implements Animation {
 
     private final Color firstcolor;
+    private final StopWatch blinkTimer;
+    private final StopWatch runTimer;
     private final Color secondcolor;
-    private final StopWatch stopWatch;
     private boolean usefirstcolor;
     public BlinkAnimation(Color firstcolor, Color secondcolor) {
         this.firstcolor= firstcolor;
         this.secondcolor = secondcolor;
-        this.stopWatch = new StopWatch();
+        this.blinkTimer = new StopWatch();
+        this.runTimer = new StopWatch();
+        this.blinkTimer.start();
+        this.runTimer.start();
         this.usefirstcolor = true;
-        this.stopWatch.start();
     }
     @Override
     public void update() {
-        System.out.println("Time passed: " + stopWatch.get());
-        if (stopWatch.get() >= 2.0) {
+        System.out.println("Time passed: " + blinkTimer.get());
+        if (blinkTimer.get() >= 2.0) {
             usefirstcolor = !usefirstcolor;
-            stopWatch.start();
+            blinkTimer.start();
         }
     }
     @Override
@@ -31,6 +34,10 @@ class BlinkAnimation implements Animation {
         for (int i = 0; i < strip.getLength(); i++) {
             strip.setColor(i, currentColor);
         }
+    }
+    @Override
+    public boolean isFinished() {
+        return runTimer.get() >= 10.0;
     }
 
 }
