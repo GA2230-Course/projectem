@@ -1,6 +1,6 @@
 package ledsystem;
 
-class LedController {
+public class LedController {
     private final LedStrip strip;
     private Animation animation;
     public LedController(int stripLength) {
@@ -14,13 +14,15 @@ class LedController {
     public void play() {
         while (true) {
             if (this.animation != null) {
-                if (this.animation.isFinished()) {
-                    break;
-                }
-            }
-            this.animation.update();
-            this.animation.apply(strip);
+                this.animation.update();
+                this.animation.apply(strip);
 
+            }
+            try {
+                Thread.sleep(15);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
     public LedStrip getStrip() {

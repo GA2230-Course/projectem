@@ -2,7 +2,7 @@ package ledsystem;
 import ledsystem.utils.StopWatch;
 import java.awt.Color;
 
-class SolidAnimation implements Animation {
+public class SolidAnimation implements Animation {
     private final Color color;
     private final StopWatch stopWatch;
 

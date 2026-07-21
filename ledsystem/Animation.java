@@ -1,6 +1,6 @@
 package ledsystem;
 
-interface Animation {
+public interface Animation {
     void apply(LedStrip strip);
 
     void update();

@@ -43,6 +43,6 @@ public class FadeAnimation implements Animation {
 
     @Override
     public boolean isFinished() {
-        return totalTimer.get() >= 10.0;
+        return totalTimer.get() >= 15.0;
     }
 }
