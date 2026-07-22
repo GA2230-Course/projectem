@@ -18,7 +18,6 @@ class LedStrip {
     }
     public void setColor(int index, Color color) {
         window.getContentPane().setBackground(color);
-        window.repaint();
     }
 
     public void setColor(int i, double blendedColor) {
