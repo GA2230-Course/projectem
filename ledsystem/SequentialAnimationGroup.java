@@ -1,22 +1,12 @@
 package ledsystem;
 
-public class sequentialAnimationGroup implements Animation {
+public class SequentialAnimationGroup implements Animation {
     private final Animation[] animations;
     private int currentIndex;
-    public sequentialAnimationGroup(Animation... animations) {
+
+    public SequentialAnimationGroup(Animation... animations) {
         this.animations = animations;
         this.currentIndex = 0;
-    }
-
-    @Override
-    public void update() {
-        if (currentIndex >= animations.length) {
-            return;
-        }
-        animations[currentIndex].update();
-        if (animations[currentIndex].isFinished()) {
-            currentIndex++;
-        }
     }
 
     @Override
@@ -24,11 +14,14 @@ public class sequentialAnimationGroup implements Animation {
         if (currentIndex >= animations.length) {
             return;
         }
-        animations[currentIndex].apply(strip);
-    }
 
-    @Override
-    public boolean isFinished() {
-        return currentIndex >= animations.length;
+        Animation current = animations[currentIndex];
+        current.apply(strip);
+        if (current instanceof TimerAnimation) {
+            TimerAnimation timerAnim = (TimerAnimation) current;
+            if (timerAnim.isTimeUp()) {
+                currentIndex++;
+            }
+        }
     }
 }
