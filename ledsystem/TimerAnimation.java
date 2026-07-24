@@ -12,7 +12,7 @@ public class TimerAnimation implements Animation, Timed {
     public TimerAnimation(Animation wrappedAnimation, double durationSeconds) {
         this.wrappedAnimation = Objects.requireNonNull(wrappedAnimation, "Wrapped animation cannot be null");
         if (durationSeconds <= 0.0) {
-            throw new IllegalArgumentException("Duration must be greater than zero: " + durationSeconds);
+            throw new IllegalArgumentException("Duration must be better than zero: " + durationSeconds);
         }
         this.durationSeconds = durationSeconds;
         this.timer = new StopWatch();

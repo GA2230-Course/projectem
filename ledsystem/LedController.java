@@ -12,13 +12,13 @@ public class LedController {
 
     public LedController(LedStrip strip) {
 
-        this.strip = Objects.requireNonNull(strip, "LED strip layout manager cannot be null");
+        this.strip = Objects.requireNonNull(strip, "LED strip layout cant be null");
         this.animations = new ArrayList<>();
         this.currentAnimationIndex = 0;
     }
 
     public void addAnimation(Animation animation) {
-        this.animations.add(Objects.requireNonNull(animation, "Cannot add a null animation instance"));
+        this.animations.add(Objects.requireNonNull(animation, "Cant add a null animation instance"));
     }
 
     public void tickNextFrame() {

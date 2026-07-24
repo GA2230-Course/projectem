@@ -20,7 +20,7 @@ public class MainProjectCode {
         );
 
         controller.addAnimation(masterSequence);
-        System.out.println("Starting clean, decoupled LED root loop engine...");
+        System.out.println(" LED ");
 
         while (true) {
             controller.tickNextFrame();

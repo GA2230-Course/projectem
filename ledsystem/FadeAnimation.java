@@ -13,8 +13,8 @@ public class FadeAnimation implements Animation {
     private boolean goingForward;
 
     public FadeAnimation(Color startColor, Color endColor) {
-        this.startColor = Objects.requireNonNull(startColor, "Start color cannot be null");
-        this.endColor = Objects.requireNonNull(endColor, "End color cannot be null");
+        this.startColor = Objects.requireNonNull(startColor, "Start color cantt be null");
+        this.endColor = Objects.requireNonNull(endColor, "End color cant be null");
         this.goingForward = true;
         this.progressTimer = new StopWatch();
         this.progressTimer.start();
@@ -22,7 +22,7 @@ public class FadeAnimation implements Animation {
 
     @Override
     public void apply(LedStrip strip) {
-        Objects.requireNonNull(strip, "LED strip cannot be null");
+        Objects.requireNonNull(strip, "LED strip cant be null");
         if (progressTimer.get() >= 2.0) {
             goingForward = !goingForward;
             progressTimer.start();
