@@ -1,4 +1,6 @@
 package ledsystem;
+
+import ledsystem.ledssim.LedStrip;
 import java.awt.Color;
 
 public class SolidAnimation implements Animation {
@@ -8,11 +10,8 @@ public class SolidAnimation implements Animation {
         this.color = color;
     }
 
-
     @Override
     public void apply(LedStrip strip) {
-        for (int i = 0; i < strip.getLength(); i++) {
-            strip.setColor(i, this.color);
-        }
+        strip.setAll(this.color);
     }
 }

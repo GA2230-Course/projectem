@@ -1,9 +1,10 @@
 package ledsystem;
 
+import ledsystem.ledssim.LedStrip;
 import ledsystem.utils.StopWatch;
 import java.awt.Color;
 
-public abstract class BlinkAnimation implements Animation {
+public class BlinkAnimation implements Animation {
 
     private final Color firstColor;
     private final Color secondColor;
@@ -28,9 +29,6 @@ public abstract class BlinkAnimation implements Animation {
 
         Color currentColor = useFirstColor ? firstColor : secondColor;
 
-        for (int i = 0; i < strip.getLength(); i++) {
-            strip.setColor(i, currentColor);
-        }
+        strip.setAll(currentColor);
     }
-
 }

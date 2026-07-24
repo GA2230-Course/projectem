@@ -1,5 +1,6 @@
 package ledsystem;
 
+import ledsystem.ledssim.LedStrip;
 import ledsystem.utils.StopWatch;
 import java.awt.Color;
 
@@ -17,9 +18,7 @@ public class TimerAnimation implements Animation {
 
     @Override
     public void apply(LedStrip strip) {
-        for (int i = 0; i < strip.getLength(); i++) {
-            strip.setColor(i, this.color);
-        }
+        strip.setAll(this.color);
     }
 
     public boolean isTimeUp() {
