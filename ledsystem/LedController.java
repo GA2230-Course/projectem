@@ -11,6 +11,7 @@ public class LedController {
     private int currentAnimationIndex;
 
     public LedController(LedStrip strip) {
+
         this.strip = Objects.requireNonNull(strip, "LED strip layout manager cannot be null");
         this.animations = new ArrayList<>();
         this.currentAnimationIndex = 0;

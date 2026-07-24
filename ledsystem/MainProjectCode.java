@@ -13,7 +13,6 @@ public class MainProjectCode {
         Animation dynamicBlinkTimed = new TimerAnimation(new BlinkAnimation(Color.BLUE, Color.CYAN), 6.0);
         Animation beautifulFadeTimed = new TimerAnimation(new FadeAnimation(Color.MAGENTA, Color.GREEN), 4.0);
 
-        // Assemble your master sequential pipeline group
         SequentialAnimationGroup masterSequence = new SequentialAnimationGroup(
                 redSolidTimed,
                 dynamicBlinkTimed,
