@@ -7,12 +7,12 @@ public class SequentialAnimationGroup implements Animation, Timed {
     private final StopWatch currentTimer;
     private int currentIndex;
     public SequentialAnimationGroup(Animation... animations) {
-        Objects.requireNonNull(animations, "Animations array cannot be null");
+        Objects.requireNonNull(animations, "Animations array cant be null");
         if (animations.length == 0) {
-            throw new IllegalArgumentException("Must provide at least one animation in the group");
+            throw new IllegalArgumentException("needs to put at lease one animation");
         }
         for (Animation anim : animations) {
-            Objects.requireNonNull(anim, "Animation elements cannot be null");
+            Objects.requireNonNull(anim, "Animation objects cant be null");
         }
         this.animations = animations;
         this.currentIndex = 0;
@@ -21,7 +21,7 @@ public class SequentialAnimationGroup implements Animation, Timed {
     }
     @Override
     public void apply(LedStrip strip) {
-        Objects.requireNonNull(strip, "LED strip cannot be null");
+        Objects.requireNonNull(strip, "LED strip cant be null");
         if (isTimeUp()) {
             return;
         }

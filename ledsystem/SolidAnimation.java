@@ -8,12 +8,12 @@ public class SolidAnimation implements Animation {
     private final Color color;
 
     public SolidAnimation(Color color) {
-        this.color = Objects.requireNonNull(color, "Solid paint color cannot be null");
+        this.color = Objects.requireNonNull(color, "Solid color cant be null");
     }
 
     @Override
     public void apply(LedStrip strip) {
-        Objects.requireNonNull(strip, "LED strip cannot be null");
+        Objects.requireNonNull(strip, "LED strip cant be null");
         strip.setAll(this.color);
     }
 }
