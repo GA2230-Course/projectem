@@ -1,42 +1,38 @@
 package ledsystem;
 
 import ledsystem.ledssim.LedStrip;
-import ledsystem.utils.StopWatch;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class LedController {
     private final LedStrip strip;
     private final List<Animation> animations;
     private int currentAnimationIndex;
-    private final StopWatch animationTimer;
 
     public LedController(LedStrip strip) {
-        this.strip = strip;
+        this.strip = Objects.requireNonNull(strip, "LED strip layout manager cannot be null");
         this.animations = new ArrayList<>();
         this.currentAnimationIndex = 0;
-        this.animationTimer = new StopWatch();
     }
+
     public void addAnimation(Animation animation) {
-        this.animations.add(animation);
+        this.animations.add(Objects.requireNonNull(animation, "Cannot add a null animation instance"));
     }
-    //I ADDED THE THREADSLEEP SO THE RUN OF THE RANDOM COLORS WILL GO SLOWER AND NOT SO FAST
-    public void play() throws InterruptedException {
+
+    public void tickNextFrame() {
         if (this.animations.isEmpty()) {
             return;
         }
-        this.animationTimer.start();
-        while (true) {
-            Animation current = this.animations.get(currentAnimationIndex);
-            current.apply(strip);
-            strip.apply();
-            if (this.animationTimer.get() >= 10.0) {
-                this.currentAnimationIndex = (this.currentAnimationIndex + 1) % this.animations.size();
-                this.animationTimer.start();
-            }
-            Thread.sleep(75);
+
+        Animation current = this.animations.get(currentAnimationIndex);
+        current.apply(strip);
+
+        if (current instanceof Timed && ((Timed) current).isTimeUp()) {
+            this.currentAnimationIndex = (this.currentAnimationIndex + 1) % this.animations.size();
         }
     }
+
     public LedStrip getStrip() {
         return this.strip;
     }

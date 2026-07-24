@@ -4,6 +4,7 @@ import ledsystem.ledssim.LedStrip;
 import ledsystem.utils.ColorUtils;
 import ledsystem.utils.StopWatch;
 import java.awt.Color;
+import java.util.Objects;
 
 public class FadeAnimation implements Animation {
     private final Color startColor;
@@ -12,8 +13,8 @@ public class FadeAnimation implements Animation {
     private boolean goingForward;
 
     public FadeAnimation(Color startColor, Color endColor) {
-        this.startColor = startColor;
-        this.endColor = endColor;
+        this.startColor = Objects.requireNonNull(startColor, "Start color cannot be null");
+        this.endColor = Objects.requireNonNull(endColor, "End color cannot be null");
         this.goingForward = true;
         this.progressTimer = new StopWatch();
         this.progressTimer.start();
@@ -21,6 +22,7 @@ public class FadeAnimation implements Animation {
 
     @Override
     public void apply(LedStrip strip) {
+        Objects.requireNonNull(strip, "LED strip cannot be null");
         if (progressTimer.get() >= 2.0) {
             goingForward = !goingForward;
             progressTimer.start();
@@ -33,7 +35,6 @@ public class FadeAnimation implements Animation {
         }
 
         Color blendedColor = ColorUtils.lerp(startColor, endColor, t);
-
         strip.setAll(blendedColor);
     }
 }

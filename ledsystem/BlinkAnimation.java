@@ -3,32 +3,29 @@ package ledsystem;
 import ledsystem.ledssim.LedStrip;
 import ledsystem.utils.StopWatch;
 import java.awt.Color;
+import java.util.Objects;
 
 public class BlinkAnimation implements Animation {
-
     private final Color firstColor;
     private final Color secondColor;
     private final StopWatch blinkTimer;
     private boolean useFirstColor;
 
     public BlinkAnimation(Color firstColor, Color secondColor) {
-        this.firstColor = firstColor;
-        this.secondColor = secondColor;
+        this.firstColor = Objects.requireNonNull(firstColor, "Primary blink color cannot be null");
+        this.secondColor = Objects.requireNonNull(secondColor, "Secondary blink color cannot be null");
         this.blinkTimer = new StopWatch();
-
         this.blinkTimer.start();
         this.useFirstColor = true;
     }
 
     @Override
     public void apply(LedStrip strip) {
-        if (blinkTimer.get() >= 2.0) {
+        Objects.requireNonNull(strip, "LED strip cannot be null");
+        if (blinkTimer.get() >= 0.5) {
             useFirstColor = !useFirstColor;
             blinkTimer.start();
         }
-
-        Color currentColor = useFirstColor ? firstColor : secondColor;
-
-        strip.setAll(currentColor);
+        strip.setAll(useFirstColor ? firstColor : secondColor);
     }
 }
