@@ -9,14 +9,14 @@ public class MainProjectCode {
         LedSim strip = LedSim.createRows(10);
         LedController controller = new LedController(strip);
 
-        Animation redSolidTimed = new TimerAnimation(new SolidAnimation(Color.RED), 3.0);
-        Animation dynamicBlinkTimed = new TimerAnimation(new BlinkAnimation(Color.BLUE, Color.CYAN), 6.0);
-        Animation beautifulFadeTimed = new TimerAnimation(new FadeAnimation(Color.MAGENTA, Color.GREEN), 4.0);
+        Animation redSolid = new TimerAnimation(new SolidAnimation(Color.RED), 3.0);
+        Animation Blinkanimation= new TimerAnimation(new BlinkAnimation(Color.BLUE, Color.CYAN), 6.0);
+        Animation Fadeanimationcode = new TimerAnimation(new FadeAnimation(Color.MAGENTA, Color.GREEN), 4.0);
 
         SequentialAnimationGroup masterSequence = new SequentialAnimationGroup(
-                redSolidTimed,
-                dynamicBlinkTimed,
-                beautifulFadeTimed
+                redSolid,
+                Blinkanimation,
+                Fadeanimationcode
         );
 
         controller.addAnimation(masterSequence);
