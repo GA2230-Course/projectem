@@ -9,13 +9,13 @@ public class mainprojectcode {
 
         LedController controller = new LedController(strip);
 
-        RandomAnimationGroup vegasproject = new RandomAnimationGroup(
+        SequentialAnimationGroup a = new SequentialAnimationGroup(
                 new TimerAnimation(Color.RED, 5),
                 new TimerAnimation(Color.BLUE, 10),
                 new TimerAnimation(Color.CYAN, 15)
         );
 
-        controller.addAnimation(vegasproject);
+        controller.addAnimation(a);
 
         System.out.println("Starting LED Simulation Window...");
         controller.play();
